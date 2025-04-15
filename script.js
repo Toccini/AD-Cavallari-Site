@@ -1,25 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  menuToggle.addEventListener('click', function() {
-    // Animação do ícone hamburguer para X
-    menuToggle.classList.toggle('active');
+    const toggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const overlay = document.getElementById('mobile-overlay');
+    const closeBtn = document.getElementById('close-btn');
     
-    // Mostrar/ocultar menu mobile
-    mobileMenu.classList.toggle('active');
+    function toggleMenu() {
+      toggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('no-scroll');
+    }
     
-    // Impedir scroll do body quando menu está aberto
-    document.body.classList.toggle('no-scroll');
-  });
-  
-  // Fechar menu ao clicar em um link
-  const navLinks = document.querySelectorAll('.mobile-menu a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      menuToggle.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.classList.remove('no-scroll');
+    // Abrir/fechar menu
+    toggle.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    
+    // Fechar ao clicar no overlay ou links
+    overlay.addEventListener('click', toggleMenu);
+    
+    document.querySelectorAll('.mobile-btn').forEach(link => {
+      link.addEventListener('click', function() {
+        // Fecha o menu apenas para links âncora
+        if(this.getAttribute('href').startsWith('#')) {
+          toggleMenu();
+        }
+      });
     });
   });
-});

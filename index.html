@@ -16,20 +16,17 @@
     <div class="navbar-wrapper">
       <div class="container">
         <nav class="navbar">
-          <!-- Logo -->
           <div class="logo">
             <img src="src/logo2.png" alt="AD Cavallari">
             <span>AD CAVALLARI</span>
           </div>
           
-          <!-- Menu Toggle Mobile -->
-          <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
+          <button class="menu-toggle" id="mobile-toggle" aria-label="Abrir menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
           </button>
   
-          <!-- Navegação Desktop -->
           <nav class="desktop-nav">
             <ul class="nav-list">
               <li><a href="#midias" class="btn">Redes Sociais</a></li>
@@ -40,17 +37,26 @@
         </nav>
       </div>
     </div>
-    
+  
     <!-- Menu Mobile -->
-    <div class="mobile-menu" id="mobile-menu">
-      <ul>
-        <li><a href="#midias" class="btn">Redes Sociais</a></li>
-        <li><a href="#agenda" class="btn">Agenda Semanal</a></li>
-        <li><a href="#contact" class="btn">Contato</a></li>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-header">
+        <div class="mobile-logo">
+          <img src="src/logo2.png" alt="AD Cavallari">
+          <span>AD CAVALLARI</span>
+        </div>
+        <button class="close-btn" id="close-btn">×</button>
+      </div>
+      
+      <ul class="mobile-list">
+        <li><a href="#midias" class="mobile-btn">Redes Sociais</a></li>
+        <li><a href="#agenda" class="mobile-btn">Agenda Semanal</a></li>
+        <li><a href="#contact" class="mobile-btn">Contato</a></li>
       </ul>
     </div>
   
-    <!-- Hero Content -->
     <div class="hero-content">
       <h1>Assembléia de Deus de Marília</h1>
       <h2>Jardim Cavallari</h2>
@@ -59,7 +65,7 @@
   </header>
     
     <!-- Redes Sociais Section -->
-    <section class="social-media-section">
+    <section id="midias" class="social-media-section">
       <div class="container">
           <h2 class="section-title">Nossas Redes Sociais</h2>
           <div class="grid social-media-grid">
@@ -148,6 +154,7 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <h2>Entre em Contato</h2>
+            <br>
             <div class="grid">
                 <div class="contact-info">
                     <div class="info-item">
@@ -200,15 +207,5 @@
             </div>
         </div>
     </footer>
-  
-    <script>
-      // Adiciona a funcionalidade de abrir e fechar o menu ao clicar no menu toggle
-      const menuToggle = document.getElementById('menu-toggle');
-      const navbarNav = document.querySelector('.navbar nav');
-
-      menuToggle.addEventListener('click', () => {
-        navbarNav.classList.toggle('open'); // Alterna a visibilidade do menu
-      });
-    </script>
 </body>
 </html>
