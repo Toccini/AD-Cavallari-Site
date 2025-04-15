@@ -1,36 +1,25 @@
-<script>
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const closeBtn = document.querySelector('.close-btn');
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuToggle.addEventListener('click', function() {
+    // Animação do ícone hamburguer para X
+    menuToggle.classList.toggle('active');
     
-    // Abrir menu
-    menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
+    // Mostrar/ocultar menu mobile
+    mobileMenu.classList.toggle('active');
     
-    // Fechar menu
-    closeBtn.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+    // Impedir scroll do body quando menu está aberto
+    document.body.classList.toggle('no-scroll');
+  });
+  
+  // Fechar menu ao clicar em um link
+  const navLinks = document.querySelectorAll('.mobile-menu a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.classList.remove('no-scroll');
     });
-    
-    // Fechar ao clicar nos links
-    const mobileLinks = document.querySelectorAll('.mobile-menu a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-    
-    // Fechar ao clicar fora do menu
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target === mobileMenu) {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
+  });
 });
-</script>
